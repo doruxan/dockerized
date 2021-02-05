@@ -1,0 +1,36 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP .NET Core service.
+
+version: '3.4'
+
+services:
+  sqldb:
+    image: "mcr.microsoft.com/mssql/server:2017-latest"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=DSlo12DSlo12
+    ports:
+      - "1433:1433"
+  logisticsapi:
+    image: logisticsapi
+    build:
+      context: .
+      dockerfile: Dockerfile
+    links:
+    - "sqldb:sqldb"
+    depends_on:
+      - sqldb
+    restart: on-failure
+    ports:
+      - 1440:80
+  logisticsclient:
+    image: logisticsclient
+    build:
+      context: .
+      dockerfile: Logistics.Client.React/Dockerfile
+    links:
+    - "logisticsapi:logisticsapi"
+    depends_on:
+      - logisticsapi
+    restart: on-failure
+    ports:
+      - 1441:80

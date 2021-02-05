@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Commands\" />
+    <Folder Include="Commands\ShippingCommands\" />
+    <Folder Include="Queries\" />
+    <Folder Include="Queries\ShippingQueries\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Logistics.Data\Logistics.Data.csproj" />
+    <ProjectReference Include="..\Logistics.Business.Core\Logistics.Business.Core.csproj" />
+  </ItemGroup>
+</Project>
