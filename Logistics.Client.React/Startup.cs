@@ -31,7 +31,7 @@ namespace Logistics.Client.React
 
             services.AddHttpClient("logistics", options =>
             {
-                //for localhost
+                //for-local
                 // options.BaseAddress = new System.Uri("https://localhost:5001");
                 options.BaseAddress = new System.Uri("https://logisticsapi");
                 options.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
